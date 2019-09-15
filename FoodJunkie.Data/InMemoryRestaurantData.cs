@@ -18,12 +18,34 @@ namespace FoodJunkie.Data
             };
         }
 
+        public int Commit()
+        {
+            return 01;
+        }
+
+        public Restaurant GetById(int id)
+        {
+            return restaurants.SingleOrDefault(restaurant => restaurant.Id == id);
+        }
+
         public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
             return from restaurant in restaurants
                    where string.IsNullOrEmpty(name) || restaurant.Name.StartsWith(name)
                    orderby restaurant.Name
                    select restaurant;
+        }
+
+        public Restaurant Update(Restaurant updatedRestaurant)
+        {
+            var restaurant = restaurants.SingleOrDefault(r => r.Id == updatedRestaurant.Id);
+            if (restaurant != null)
+            {
+                restaurant.Name = updatedRestaurant.Name;
+                restaurant.Location = updatedRestaurant.Location;
+                restaurant.Cuisine = updatedRestaurant.Cuisine;
+            }
+            return restaurant;
         }
     }
 }
