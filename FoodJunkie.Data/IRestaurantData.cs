@@ -11,6 +11,8 @@ namespace FoodJunkie.Data
 
         Restaurant GetById(int id);
 
+        Restaurant Add(Restaurant newRestaurant);
+
         Restaurant Update(Restaurant updatedRestaurant);
 
         int Commit();

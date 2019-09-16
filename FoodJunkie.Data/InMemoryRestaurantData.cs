@@ -18,6 +18,13 @@ namespace FoodJunkie.Data
             };
         }
 
+        public Restaurant Add(Restaurant newRestaurant)
+        {
+            restaurants.Add(newRestaurant);
+            newRestaurant.Id = restaurants.Max(r => r.Id) + 1;
+            return newRestaurant;
+        }
+
         public int Commit()
         {
             return 01;
