@@ -21,9 +21,9 @@ namespace FoodJunkie
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<FoodJunkieDbContext>(options => 
+            services.AddDbContextPool<FoodJunkieDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("FoodJunkie"))
+                options.UseSqlServer(Configuration.GetConnectionString("FoodJunkieDB"));
             });
 
             services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
